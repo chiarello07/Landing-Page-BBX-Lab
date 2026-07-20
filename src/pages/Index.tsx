@@ -1,10 +1,21 @@
-/* Home Page - Replace this page layout, components, content, behavior with what you want and translate to the language of the user */
+import { Hero } from '@/components/sections/Hero'
+import { Context } from '@/components/sections/Context'
+import { Deliverables } from '@/components/sections/Deliverables'
+import { Differentials } from '@/components/sections/Differentials'
+import { Stages } from '@/components/sections/Stages'
+import { Results } from '@/components/sections/Results'
+import { CtaForm } from '@/components/sections/CtaForm'
+
 const Index = () => {
   return (
-    <div className="container mx-auto py-8 px-4">
-      <h1 className="text-3xl font-bold mb-6">
-        This is a example page ready to be rewritten with your own content
-      </h1>
+    <div className="w-full">
+      <Hero />
+      <Context />
+      <Deliverables />
+      <Differentials />
+      <Stages />
+      <Results />
+      <CtaForm />
     </div>
   )
 }
