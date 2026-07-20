@@ -1,4 +1,4 @@
-import { Outlet } from 'react-router-dom'
+import { Link, Outlet } from 'react-router-dom'
 import { Logo } from '@/components/Logo'
 
 export default function Layout() {
@@ -6,9 +6,9 @@ export default function Layout() {
     <div className="flex flex-col min-h-screen">
       <header className="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-border transition-all">
         <div className="container mx-auto px-4 h-20 flex items-center justify-between">
-          <a href="#" className="hover:opacity-80 transition-opacity">
+          <Link to="/" className="hover:opacity-80 transition-opacity">
             <Logo />
-          </a>
+          </Link>
           <nav className="hidden md:flex items-center gap-8 text-sm font-semibold tracking-wide uppercase">
             <a href="#diagnostico" className="text-white hover:text-accent transition-colors">
               Contato
