@@ -4,6 +4,7 @@ import { Deliverables } from '@/components/sections/Deliverables'
 import { Differentials } from '@/components/sections/Differentials'
 import { Stages } from '@/components/sections/Stages'
 import { Results } from '@/components/sections/Results'
+import { Partners } from '@/components/sections/Partners'
 import { CtaForm } from '@/components/sections/CtaForm'
 
 const Index = () => {
@@ -15,6 +16,7 @@ const Index = () => {
       <Differentials />
       <Stages />
       <Results />
+      <Partners />
       <CtaForm />
     </div>
   )
