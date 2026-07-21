@@ -25,7 +25,7 @@ export default function Layout() {
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-start gap-8 mb-12">
             <div className="max-w-xs">
-              <Logo />
+              <Logo className="h-20 md:h-28" />
               <p className="text-muted-foreground mt-4 text-sm leading-relaxed">
                 Revenue Operation — Inteligência operacional por trás do seu crescimento.
               </p>
