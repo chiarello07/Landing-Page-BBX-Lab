@@ -39,16 +39,16 @@ export default function Layout() {
                 rel="noreferrer"
                 className="text-muted-foreground hover:text-accent transition-colors flex items-center gap-2"
               >
-                [51] 9 9411 6442
+                [51] 99411-6442
               </a>
               <a href="#" className="text-muted-foreground hover:text-accent transition-colors">
-                @bbx-lab
+                @bbx_lab
               </a>
               <a
                 href="https://bbxlab.com.br"
                 className="text-muted-foreground hover:text-accent transition-colors"
               >
-                bbxlab.com.br
+                www.bbxlab.com.br
               </a>
             </div>
           </div>
