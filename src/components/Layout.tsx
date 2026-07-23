@@ -5,7 +5,7 @@ export default function Layout() {
   return (
     <div className="flex flex-col min-h-screen">
       <header className="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-border transition-all">
-        <div className="container mx-auto px-4 h-28 md:h-40 flex items-center justify-between">
+        <div className="container mx-auto px-4 h-20 md:h-28 flex items-center justify-between">
           <Link to="/" className="hover:opacity-80 transition-opacity">
             <Logo />
           </Link>

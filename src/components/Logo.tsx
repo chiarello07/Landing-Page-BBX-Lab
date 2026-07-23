@@ -11,7 +11,7 @@ export function Logo({ className }: LogoProps) {
       <img
         src={logoUrl}
         alt="Black Box Lab Logo"
-        className={cn('h-24 md:h-36 w-auto object-contain', className)}
+        className={cn('h-16 md:h-24 w-auto object-contain', className)}
       />
     </div>
   )
