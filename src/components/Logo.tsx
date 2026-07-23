@@ -1,4 +1,4 @@
-import logoUrl from '@/assets/5-deed3.svg'
+import logoUrl from '@/assets/bbx-18-a3bfc.png'
 import { cn } from '@/lib/utils'
 
 interface LogoProps {
