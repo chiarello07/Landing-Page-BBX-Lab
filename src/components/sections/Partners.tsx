@@ -5,6 +5,7 @@ import nestleLogo from '@/assets/nestle-logo-38f57.png'
 import saoJoaoLogo from '@/assets/logo-farmacias-sao-joao-positiva-fd021.webp'
 import sicrediLogo from '@/assets/sicredilogosbranca-29a24.png'
 import keplerWeberLogo from '@/assets/kepler-weber-logo-pngseeklogo-204885-98762.png'
+import southSummitLogo from '@/assets/southsummit-2-76b67.png'
 
 export function Partners() {
   const [partners, setPartners] = useState<Partner[]>([])
@@ -44,6 +45,10 @@ export function Partners() {
                 partner.name === 'Kepler Weber' ||
                 partner.name === 'Empresa Delta' ||
                 partner.name === 'KeplerWeber'
+              const isSouthSummit =
+                partner.name === 'South Summit' ||
+                partner.name === 'Empresa Epsilon' ||
+                partner.name === 'SouthSummit'
 
               const logoSrc = isSicredi
                 ? partner.logo
@@ -61,9 +66,13 @@ export function Partners() {
                       ? partner.logo
                         ? getLogoUrl(partner)
                         : keplerWeberLogo
-                      : partner.logo
-                        ? getLogoUrl(partner)
-                        : null
+                      : isSouthSummit
+                        ? partner.logo
+                          ? getLogoUrl(partner)
+                          : southSummitLogo
+                        : partner.logo
+                          ? getLogoUrl(partner)
+                          : null
 
               const altText = isSicredi
                 ? 'Sicredi'
@@ -73,7 +82,9 @@ export function Partners() {
                     ? 'Nestlé'
                     : isKeplerWeber
                       ? 'Kepler Weber'
-                      : partner.name
+                      : isSouthSummit
+                        ? 'South Summit'
+                        : partner.name
 
               return (
                 <div
@@ -87,7 +98,7 @@ export function Partners() {
                       className={
                         isKeplerWeber
                           ? 'max-h-16 md:max-h-20 w-auto object-contain transition-all duration-300 group-hover:brightness-110'
-                          : isSaoJoao || isNestle || isSicredi
+                          : isSaoJoao || isNestle || isSicredi || isSouthSummit
                             ? 'max-h-12 md:max-h-14 w-auto object-contain transition-all duration-300 group-hover:brightness-110'
                             : 'max-h-full max-w-full object-contain grayscale brightness-0 invert group-hover:grayscale-0'
                       }
