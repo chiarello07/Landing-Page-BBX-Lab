@@ -4,6 +4,7 @@ import { getActivePartners, getLogoUrl, type Partner } from '@/services/partners
 import nestleLogo from '@/assets/nestle-logo-38f57.png'
 import saoJoaoLogo from '@/assets/logo-farmacias-sao-joao-positiva-fd021.webp'
 import sicrediLogo from '@/assets/sicredilogosbranca-29a24.png'
+import keplerWeberLogo from '@/assets/kepler-weber-logo-pngseeklogo-204885-98762.png'
 
 export function Partners() {
   const [partners, setPartners] = useState<Partner[]>([])
@@ -39,6 +40,10 @@ export function Partners() {
                 partner.name === 'Empresa Beta' ||
                 partner.name === 'Farmacias Sao Joao'
               const isSicredi = partner.name === 'Sicredi' || partner.name === 'Empresa Gamma'
+              const isKeplerWeber =
+                partner.name === 'Kepler Weber' ||
+                partner.name === 'Empresa Delta' ||
+                partner.name === 'KeplerWeber'
 
               const logoSrc = isSicredi
                 ? partner.logo
@@ -52,9 +57,13 @@ export function Partners() {
                     ? partner.logo
                       ? getLogoUrl(partner)
                       : nestleLogo
-                    : partner.logo
-                      ? getLogoUrl(partner)
-                      : null
+                    : isKeplerWeber
+                      ? partner.logo
+                        ? getLogoUrl(partner)
+                        : keplerWeberLogo
+                      : partner.logo
+                        ? getLogoUrl(partner)
+                        : null
 
               const altText = isSicredi
                 ? 'Sicredi'
@@ -62,7 +71,9 @@ export function Partners() {
                   ? 'Farmácias São João'
                   : isNestle
                     ? 'Nestlé'
-                    : partner.name
+                    : isKeplerWeber
+                      ? 'Kepler Weber'
+                      : partner.name
 
               return (
                 <div
@@ -74,7 +85,7 @@ export function Partners() {
                       src={logoSrc}
                       alt={altText}
                       className={
-                        isSaoJoao || isNestle || isSicredi
+                        isSaoJoao || isNestle || isSicredi || isKeplerWeber
                           ? 'max-h-12 md:max-h-14 w-auto object-contain transition-all duration-300 group-hover:brightness-110'
                           : 'max-h-full max-w-full object-contain grayscale brightness-0 invert group-hover:grayscale-0'
                       }
