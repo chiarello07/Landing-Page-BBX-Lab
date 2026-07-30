@@ -26,7 +26,7 @@ export function Partners() {
         <FadeIn>
           <div className="text-center mb-12">
             <h2 className="font-display font-black text-3xl md:text-4xl uppercase text-white mb-3">
-              Parceiros
+              PARTNERS
             </h2>
             <div className="w-12 h-0.5 bg-accent mx-auto" />
           </div>
