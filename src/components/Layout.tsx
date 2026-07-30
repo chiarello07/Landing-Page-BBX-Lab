@@ -27,7 +27,7 @@ export default function Layout() {
             <div className="max-w-xs">
               <Logo className="h-20 md:h-28" />
               <p className="text-muted-foreground mt-4 text-sm leading-relaxed">
-                Revenue Operation — Inteligência operacional por trás do seu crescimento.
+                Revenue Operation — O padrão das empresas que mais crescem no mercado
               </p>
             </div>
 

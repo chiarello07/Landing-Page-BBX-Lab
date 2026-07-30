@@ -36,7 +36,7 @@ export function Hero() {
                 document.getElementById('diagnostico')?.scrollIntoView({ behavior: 'smooth' })
               }
             >
-              Agendar Diagnóstico Gratuito
+              Agendar Diagnóstico DE REVOPS
             </Button>
           </FadeIn>
         </div>
