@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { FadeIn } from '@/components/FadeIn'
 import { getActivePartners, getLogoUrl, type Partner } from '@/services/partners'
 import nestleLogo from '@/assets/nestle-logo-38f57.png'
+import saoJoaoLogo from '@/assets/logo-farmacias-sao-joao-positiva-fd021.webp'
 
 export function Partners() {
   const [partners, setPartners] = useState<Partner[]>([])
@@ -32,13 +33,24 @@ export function Partners() {
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8 md:gap-12 items-center justify-items-center max-w-5xl mx-auto">
             {partners.map((partner) => {
               const isNestle = partner.name === 'Nestlé' || partner.name === 'Empresa Alpha'
-              const logoSrc = isNestle
+              const isSaoJoao =
+                partner.name === 'Farmácias São João' ||
+                partner.name === 'Empresa Beta' ||
+                partner.name === 'Farmacias Sao Joao'
+
+              const logoSrc = isSaoJoao
                 ? partner.logo
                   ? getLogoUrl(partner)
-                  : nestleLogo
-                : partner.logo
-                  ? getLogoUrl(partner)
-                  : null
+                  : saoJoaoLogo
+                : isNestle
+                  ? partner.logo
+                    ? getLogoUrl(partner)
+                    : nestleLogo
+                  : partner.logo
+                    ? getLogoUrl(partner)
+                    : null
+
+              const altText = isSaoJoao ? 'Farmácias São João' : isNestle ? 'Nestlé' : partner.name
 
               return (
                 <div
@@ -48,9 +60,9 @@ export function Partners() {
                   {logoSrc ? (
                     <img
                       src={logoSrc}
-                      alt={isNestle ? 'Nestlé' : partner.name}
+                      alt={altText}
                       className={
-                        isNestle
+                        isSaoJoao || isNestle
                           ? 'max-h-12 md:max-h-14 w-auto object-contain transition-all duration-300 group-hover:brightness-110'
                           : 'max-h-full max-w-full object-contain grayscale brightness-0 invert group-hover:grayscale-0'
                       }
