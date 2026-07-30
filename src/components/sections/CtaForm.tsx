@@ -9,8 +9,10 @@ export function CtaForm() {
   const [loading, setLoading] = useState(false)
   const [formData, setFormData] = useState({
     name: '',
-    email: '',
+    cargo: '',
     company: '',
+    setor: '',
+    desafio: '',
   })
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -19,7 +21,13 @@ export function CtaForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (!formData.name || !formData.email || !formData.company) {
+    if (
+      !formData.name ||
+      !formData.cargo ||
+      !formData.company ||
+      !formData.setor ||
+      !formData.desafio
+    ) {
       toast({ title: 'Erro', description: 'Preencha todos os campos.', variant: 'destructive' })
       return
     }
@@ -27,7 +35,7 @@ export function CtaForm() {
     setLoading(true)
     try {
       await createLead(formData)
-      const msg = `Olá! Meu nome é ${formData.name} da empresa ${formData.company} e gostaria de um diagnóstico gratuito de RevOps.`
+      const msg = `Olá! Meu nome é ${formData.name}, cargo ${formData.cargo}, da empresa ${formData.company}, setor ${formData.setor}. Meu maior desafio operacional é: ${formData.desafio}`
       const waUrl = `https://wa.me/5551994116442?text=${encodeURIComponent(msg)}`
       window.location.href = waUrl
     } catch (err) {
@@ -68,18 +76,18 @@ export function CtaForm() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  placeholder="Seu nome"
+                  placeholder="Nome"
                   className="w-full bg-transparent border-b border-border focus:border-accent outline-none py-3 text-white placeholder:text-muted-foreground transition-colors font-sans"
                 />
               </div>
               <div className="relative">
                 <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
+                  type="text"
+                  name="cargo"
+                  value={formData.cargo}
                   onChange={handleChange}
                   required
-                  placeholder="E-mail corporativo"
+                  placeholder="Cargo"
                   className="w-full bg-transparent border-b border-border focus:border-accent outline-none py-3 text-white placeholder:text-muted-foreground transition-colors font-sans"
                 />
               </div>
@@ -90,8 +98,29 @@ export function CtaForm() {
                   value={formData.company}
                   onChange={handleChange}
                   required
-                  placeholder="Sua empresa"
+                  placeholder="Nome da Empresa"
                   className="w-full bg-transparent border-b border-border focus:border-accent outline-none py-3 text-white placeholder:text-muted-foreground transition-colors font-sans"
+                />
+              </div>
+              <div className="relative">
+                <input
+                  type="text"
+                  name="setor"
+                  value={formData.setor}
+                  onChange={handleChange}
+                  required
+                  placeholder="Setor"
+                  className="w-full bg-transparent border-b border-border focus:border-accent outline-none py-3 text-white placeholder:text-muted-foreground transition-colors font-sans"
+                />
+              </div>
+              <div className="relative">
+                <textarea
+                  name="desafio"
+                  value={formData.desafio}
+                  onChange={(e) => setFormData((prev) => ({ ...prev, desafio: e.target.value }))}
+                  required
+                  placeholder="Qual o maior desafio operacional da empresa hoje?"
+                  className="w-full bg-transparent border-b border-border focus:border-accent outline-none py-3 text-white placeholder:text-muted-foreground transition-colors font-sans min-h-[100px] resize-none"
                 />
               </div>
             </div>

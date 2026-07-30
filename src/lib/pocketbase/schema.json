@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-23T14:25:36.664Z",
+  "generatedAt": "2026-07-30T20:45:46.253Z",
   "collections": [
     {
       "name": "users",
@@ -86,6 +86,24 @@
           "required": false,
           "system": false,
           "autodateTriggers": ["onCreate", "onUpdate"]
+        },
+        {
+          "name": "cargo",
+          "type": "text",
+          "required": true,
+          "system": false
+        },
+        {
+          "name": "setor",
+          "type": "text",
+          "required": true,
+          "system": false
+        },
+        {
+          "name": "desafio",
+          "type": "text",
+          "required": true,
+          "system": false
         }
       ],
       "indexes": []
