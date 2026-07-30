@@ -24,7 +24,7 @@ export function Partners() {
             <h2 className="font-display font-black text-3xl md:text-4xl uppercase text-white mb-3">
               Parceiros
             </h2>
-            <div className="w-12 h-0.5 bg-[#FFEC00] mx-auto" />
+            <div className="w-12 h-0.5 bg-accent mx-auto" />
           </div>
         </FadeIn>
 
@@ -43,7 +43,7 @@ export function Partners() {
               return (
                 <div
                   key={partner.id}
-                  className="flex items-center justify-center w-full h-20 md:h-24 transition-all duration-300 opacity-70 hover:opacity-100 hover:scale-105 group focus-within:ring-2 focus-within:ring-[#FFEC00] rounded-lg p-2"
+                  className="flex items-center justify-center w-full h-20 md:h-24 transition-all duration-300 opacity-70 hover:opacity-100 hover:scale-105 group focus-within:ring-2 focus-within:ring-accent rounded-lg p-2"
                 >
                   {logoSrc ? (
                     <img
@@ -51,13 +51,13 @@ export function Partners() {
                       alt={isNestle ? 'Nestlé' : partner.name}
                       className={
                         isNestle
-                          ? 'max-h-12 md:max-h-14 w-auto object-contain transition-all duration-300 group-hover:brightness-125'
+                          ? 'max-h-12 md:max-h-14 w-auto object-contain transition-all duration-300 group-hover:brightness-110'
                           : 'max-h-full max-w-full object-contain grayscale brightness-0 invert group-hover:grayscale-0'
                       }
                       loading="lazy"
                     />
                   ) : (
-                    <span className="font-display font-bold text-lg md:text-xl text-muted-foreground text-center group-hover:text-[#FFEC00] transition-colors">
+                    <span className="font-display font-bold text-lg md:text-xl text-muted-foreground text-center group-hover:text-accent transition-colors">
                       {partner.name}
                     </span>
                   )}
