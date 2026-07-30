@@ -109,7 +109,7 @@ export function CtaForm() {
                   value={formData.setor}
                   onChange={handleChange}
                   required
-                  placeholder="Setor"
+                  placeholder="Contato"
                   className="w-full bg-transparent border-b border-border focus:border-accent outline-none py-3 text-white placeholder:text-muted-foreground transition-colors font-sans"
                 />
               </div>
