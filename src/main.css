@@ -24,7 +24,7 @@
     --muted: 0 0% 15%;
     --muted-foreground: 0 0% 60%; /* #888888 */
 
-    --accent: 78 100% 72%; /* #C1FF72 Electric Lime */
+    --accent: 48 100% 50%; /* #FFCC00 São Paulo Yellow */
     --accent-foreground: 0 0% 0%;
 
     --destructive: 0 84.2% 60.2%;
@@ -32,7 +32,7 @@
 
     --border: 0 0% 20%; /* #333333 */
     --input: 0 0% 20%;
-    --ring: 78 100% 72%;
+    --ring: 48 100% 50%;
 
     --radius: 0.25rem; /* Max 4px */
   }
@@ -51,13 +51,13 @@
     --secondary-foreground: 0 0% 100%;
     --muted: 0 0% 15%;
     --muted-foreground: 0 0% 60%;
-    --accent: 78 100% 72%;
+    --accent: 48 100% 50%;
     --accent-foreground: 0 0% 0%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
     --border: 0 0% 20%;
     --input: 0 0% 20%;
-    --ring: 78 100% 72%;
+    --ring: 48 100% 50%;
   }
 
   body {
