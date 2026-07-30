@@ -3,6 +3,7 @@ import { FadeIn } from '@/components/FadeIn'
 import { getActivePartners, getLogoUrl, type Partner } from '@/services/partners'
 import nestleLogo from '@/assets/nestle-logo-38f57.png'
 import saoJoaoLogo from '@/assets/logo-farmacias-sao-joao-positiva-fd021.webp'
+import sicrediLogo from '@/assets/sicredilogosbranca-29a24.png'
 
 export function Partners() {
   const [partners, setPartners] = useState<Partner[]>([])
@@ -37,20 +38,31 @@ export function Partners() {
                 partner.name === 'Farmácias São João' ||
                 partner.name === 'Empresa Beta' ||
                 partner.name === 'Farmacias Sao Joao'
+              const isSicredi = partner.name === 'Sicredi' || partner.name === 'Empresa Gamma'
 
-              const logoSrc = isSaoJoao
+              const logoSrc = isSicredi
                 ? partner.logo
                   ? getLogoUrl(partner)
-                  : saoJoaoLogo
-                : isNestle
+                  : sicrediLogo
+                : isSaoJoao
                   ? partner.logo
                     ? getLogoUrl(partner)
-                    : nestleLogo
-                  : partner.logo
-                    ? getLogoUrl(partner)
-                    : null
+                    : saoJoaoLogo
+                  : isNestle
+                    ? partner.logo
+                      ? getLogoUrl(partner)
+                      : nestleLogo
+                    : partner.logo
+                      ? getLogoUrl(partner)
+                      : null
 
-              const altText = isSaoJoao ? 'Farmácias São João' : isNestle ? 'Nestlé' : partner.name
+              const altText = isSicredi
+                ? 'Sicredi'
+                : isSaoJoao
+                  ? 'Farmácias São João'
+                  : isNestle
+                    ? 'Nestlé'
+                    : partner.name
 
               return (
                 <div
@@ -62,7 +74,7 @@ export function Partners() {
                       src={logoSrc}
                       alt={altText}
                       className={
-                        isSaoJoao || isNestle
+                        isSaoJoao || isNestle || isSicredi
                           ? 'max-h-12 md:max-h-14 w-auto object-contain transition-all duration-300 group-hover:brightness-110'
                           : 'max-h-full max-w-full object-contain grayscale brightness-0 invert group-hover:grayscale-0'
                       }
