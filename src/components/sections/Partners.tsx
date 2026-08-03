@@ -96,11 +96,9 @@ export function Partners() {
                       src={logoSrc}
                       alt={altText}
                       className={
-                        isKeplerWeber || isNestle
+                        isKeplerWeber || isNestle || isSaoJoao || isSicredi || isSouthSummit
                           ? 'max-h-16 md:max-h-20 w-auto object-contain transition-all duration-300 group-hover:brightness-110'
-                          : isSaoJoao || isSicredi || isSouthSummit
-                            ? 'max-h-12 md:max-h-14 w-auto object-contain transition-all duration-300 group-hover:brightness-110'
-                            : 'max-h-full max-w-full object-contain grayscale brightness-0 invert group-hover:grayscale-0'
+                          : 'max-h-full max-w-full object-contain grayscale brightness-0 invert group-hover:grayscale-0'
                       }
                       loading="lazy"
                     />
