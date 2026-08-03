@@ -78,10 +78,18 @@ export default function Layout() {
                 </a>
               </div>
               <a
-                href="https://bbxlab.com.br"
+                href="mailto:atendimento@bbxlab.com.br"
                 className="text-muted-foreground hover:text-accent transition-colors"
               >
-                www.bbxlab.com.br
+                atendimento@bbxlab.com.br
+              </a>
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=R.+Felicissimo+de+Azevedo,+1020+sala+502+-+São+João,+Porto+Alegre+-+RS,+90540-110"
+                target="_blank"
+                rel="noreferrer"
+                className="text-muted-foreground hover:text-accent transition-colors"
+              >
+                R. Felicissimo de Azevedo, 1020 sala 502 - São João, Porto Alegre - RS, 90540-110
               </a>
             </div>
           </div>

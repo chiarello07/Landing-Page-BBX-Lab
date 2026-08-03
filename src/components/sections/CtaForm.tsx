@@ -11,7 +11,7 @@ export function CtaForm() {
     name: '',
     cargo: '',
     company: '',
-    setor: '',
+    email: '',
     desafio: '',
   })
 
@@ -25,7 +25,7 @@ export function CtaForm() {
       !formData.name ||
       !formData.cargo ||
       !formData.company ||
-      !formData.setor ||
+      !formData.email ||
       !formData.desafio
     ) {
       toast({ title: 'Erro', description: 'Preencha todos os campos.', variant: 'destructive' })
@@ -35,9 +35,9 @@ export function CtaForm() {
     setLoading(true)
     try {
       await createLead(formData)
-      const msg = `Olá! Meu nome é ${formData.name}, cargo ${formData.cargo}, da empresa ${formData.company}, setor ${formData.setor}. Meu maior desafio operacional é: ${formData.desafio}`
+      const msg = `Olá, meu nome é ${formData.name}, sou ${formData.cargo}, na empresa ${formData.company}, e meu contato é ${formData.email}. O maior desafio na empresa é ${formData.desafio}.`
       const waUrl = `https://wa.me/5551994116442?text=${encodeURIComponent(msg)}`
-      window.location.href = waUrl
+      window.open(waUrl, '_blank')
     } catch (err) {
       toast({
         title: 'Erro ao enviar',
@@ -104,12 +104,12 @@ export function CtaForm() {
               </div>
               <div className="relative">
                 <input
-                  type="text"
-                  name="setor"
-                  value={formData.setor}
+                  type="email"
+                  name="email"
+                  value={formData.email}
                   onChange={handleChange}
                   required
-                  placeholder="Contato"
+                  placeholder="Contato (E-mail)"
                   className="w-full bg-transparent border-b border-border focus:border-accent outline-none py-3 text-white placeholder:text-muted-foreground transition-colors font-sans"
                 />
               </div>

@@ -4,8 +4,11 @@ export const createLead = (data: {
   name: string
   cargo: string
   company: string
-  setor: string
+  email: string
   desafio: string
 }) => {
-  return pb.collection('leads').create(data)
+  return pb.collection('leads').create({
+    ...data,
+    setor: 'Não informado',
+  })
 }
