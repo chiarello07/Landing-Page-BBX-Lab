@@ -1,6 +1,6 @@
 import { FadeIn } from '@/components/FadeIn'
 import { Button } from '@/components/ui/button'
-import { TrendingUp, PieChart, Activity } from 'lucide-react'
+import { TrendingUp, PieChart, Activity, Clock } from 'lucide-react'
 
 export function Hero() {
   return (
@@ -29,15 +29,21 @@ export function Hero() {
           </FadeIn>
 
           <FadeIn delay={400}>
-            <Button
-              size="lg"
-              className="rounded-none bg-accent text-accent-foreground hover:bg-accent/90 text-lg h-14 px-8 uppercase font-bold tracking-wide transition-transform hover:scale-[1.02]"
-              onClick={() =>
-                document.getElementById('diagnostico')?.scrollIntoView({ behavior: 'smooth' })
-              }
-            >
-              Agendar Diagnóstico DE REVOPS
-            </Button>
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
+              <Button
+                size="lg"
+                className="rounded-none bg-accent text-accent-foreground hover:bg-accent/90 text-lg h-14 px-8 uppercase font-bold tracking-wide transition-transform hover:scale-[1.02]"
+                onClick={() =>
+                  document.getElementById('diagnostico')?.scrollIntoView({ behavior: 'smooth' })
+                }
+              >
+                Agendar Diagnóstico DE REVOPS
+              </Button>
+              <span className="inline-flex items-center gap-2 text-sm text-muted-foreground border border-accent/20 bg-accent/5 px-4 py-2 rounded-none">
+                <Clock className="w-4 h-4 text-accent" />
+                Atendemos 5 empresas por mês
+              </span>
+            </div>
           </FadeIn>
         </div>
 

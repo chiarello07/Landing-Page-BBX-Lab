@@ -1,6 +1,9 @@
 import { Link, Outlet } from 'react-router-dom'
 import { Instagram, Facebook } from 'lucide-react'
 import { Logo } from '@/components/Logo'
+import { Button } from '@/components/ui/button'
+import { cn } from '@/lib/utils'
+import { useState, useEffect } from 'react'
 
 function TikTokIcon({ className }: { className?: string }) {
   return (
@@ -18,17 +21,42 @@ function TikTokIcon({ className }: { className?: string }) {
 }
 
 export default function Layout() {
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 40)
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   return (
     <div className="flex flex-col min-h-screen">
-      <header className="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-border transition-all">
+      <header
+        className={cn(
+          'fixed top-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-border transition-all duration-300',
+          scrolled && 'bg-black/95 shadow-lg shadow-black/50',
+        )}
+      >
         <div className="container mx-auto px-4 h-20 md:h-28 flex items-center justify-between">
           <Link to="/" className="hover:opacity-80 transition-opacity">
             <Logo />
           </Link>
-          <nav className="hidden md:flex items-center gap-8 text-sm font-semibold tracking-wide uppercase">
-            <a href="#diagnostico" className="text-white hover:text-accent transition-colors">
+          <nav className="flex items-center gap-4 md:gap-8 text-sm font-semibold tracking-wide uppercase">
+            <a
+              href="#diagnostico"
+              className="hidden md:inline text-white hover:text-accent transition-colors"
+            >
               Contato
             </a>
+            <Button
+              size="sm"
+              className="rounded-none bg-accent text-accent-foreground hover:bg-accent/90 uppercase font-bold tracking-wide transition-transform hover:scale-[1.03] text-xs md:text-sm h-10 md:h-12 px-4 md:px-6"
+              onClick={() =>
+                document.getElementById('diagnostico')?.scrollIntoView({ behavior: 'smooth' })
+              }
+            >
+              Agendar Diagnóstico
+            </Button>
           </nav>
         </div>
       </header>

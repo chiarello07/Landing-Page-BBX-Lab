@@ -3,10 +3,21 @@ import { FadeIn } from '@/components/FadeIn'
 import { Button } from '@/components/ui/button'
 import { createLead } from '@/services/leads'
 import { toast } from '@/components/ui/use-toast'
-import { Loader2 } from 'lucide-react'
+import { Loader2, ChevronDown } from 'lucide-react'
+import { cn } from '@/lib/utils'
+
+const DESAFIO_OPTIONS = [
+  'Estruturar processos e métricas comerciais',
+  'Alinhar marketing e vendas',
+  'Melhorar funil e taxa de conversão',
+  'Implementar ou otimizar CRM',
+  'Escalar o time com previsibilidade',
+  'Outro',
+] as const
 
 export function CtaForm() {
   const [loading, setLoading] = useState(false)
+  const [desafioError, setDesafioError] = useState(false)
   const [formData, setFormData] = useState({
     name: '',
     cargo: '',
@@ -19,16 +30,24 @@ export function CtaForm() {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
+  const handleDesafioChange = (value: string) => {
+    setFormData((prev) => ({ ...prev, desafio: value }))
+    setDesafioError(false)
+  }
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (
-      !formData.name ||
-      !formData.cargo ||
-      !formData.company ||
-      !formData.email ||
-      !formData.desafio
-    ) {
+    if (!formData.name || !formData.cargo || !formData.company || !formData.email) {
       toast({ title: 'Erro', description: 'Preencha todos os campos.', variant: 'destructive' })
+      return
+    }
+    if (!formData.desafio) {
+      setDesafioError(true)
+      toast({
+        title: 'Erro',
+        description: 'Selecione o seu maior desafio.',
+        variant: 'destructive',
+      })
       return
     }
 
@@ -114,14 +133,39 @@ export function CtaForm() {
                 />
               </div>
               <div className="relative">
-                <textarea
-                  name="desafio"
-                  value={formData.desafio}
-                  onChange={(e) => setFormData((prev) => ({ ...prev, desafio: e.target.value }))}
-                  required
-                  placeholder="Qual o maior desafio operacional da empresa hoje?"
-                  className="w-full bg-transparent border-b border-border focus:border-accent outline-none py-3 text-white placeholder:text-muted-foreground transition-colors font-sans min-h-[100px] resize-none"
-                />
+                <label className="block text-sm text-muted-foreground mb-2 font-sans">
+                  Qual o maior desafio operacional da empresa hoje?
+                </label>
+                <div className="relative">
+                  <select
+                    name="desafio"
+                    value={formData.desafio}
+                    onChange={(e) => handleDesafioChange(e.target.value)}
+                    className={cn(
+                      'w-full bg-transparent border-b outline-none py-3 text-white transition-colors font-sans appearance-none cursor-pointer pr-10',
+                      desafioError
+                        ? 'border-destructive'
+                        : formData.desafio
+                          ? 'border-accent'
+                          : 'border-border focus:border-accent',
+                    )}
+                  >
+                    <option value="" disabled className="bg-black text-muted-foreground">
+                      Selecione uma opção
+                    </option>
+                    {DESAFIO_OPTIONS.map((option) => (
+                      <option key={option} value={option} className="bg-black text-white">
+                        {option}
+                      </option>
+                    ))}
+                  </select>
+                  <ChevronDown className="absolute right-0 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground pointer-events-none" />
+                </div>
+                {desafioError && (
+                  <p className="text-sm text-destructive mt-2 font-sans">
+                    Selecione uma opção para continuar.
+                  </p>
+                )}
               </div>
             </div>
 
