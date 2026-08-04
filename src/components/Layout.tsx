@@ -1,5 +1,5 @@
 import { Link, Outlet } from 'react-router-dom'
-import { Instagram } from 'lucide-react'
+import { Instagram, Facebook } from 'lucide-react'
 import { Logo } from '@/components/Logo'
 
 function TikTokIcon({ className }: { className?: string }) {
@@ -39,10 +39,10 @@ export default function Layout() {
 
       <footer className="border-t border-accent/20 bg-[#0a0a0a] pt-16 pb-8">
         <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row justify-between items-start gap-8 mb-12">
-            <div className="max-w-xs">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 mb-12">
+            <div className="max-w-xs flex flex-col gap-4">
               <Logo className="h-20 md:h-28" />
-              <p className="text-muted-foreground mt-4 text-sm leading-relaxed">
+              <p className="text-muted-foreground text-sm leading-relaxed">
                 Revenue Operation — O padrão das empresas que mais crescem no mercado
               </p>
             </div>
@@ -75,6 +75,15 @@ export default function Layout() {
                   className="text-muted-foreground hover:text-accent transition-colors"
                 >
                   <TikTokIcon className="w-5 h-5" />
+                </a>
+                <a
+                  href="https://www.facebook.com/bbxlab/"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Facebook da Black Box Lab"
+                  className="text-muted-foreground hover:text-accent transition-colors"
+                >
+                  <Facebook className="w-5 h-5" />
                 </a>
               </div>
               <a
